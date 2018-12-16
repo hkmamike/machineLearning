@@ -68,7 +68,6 @@ for r=1:size(Theta2, 1)
 end
 
 
-
 % backpropagation
 del_1 = zeros(size(Theta1));
 del_2 = zeros(size(Theta2));
@@ -100,8 +99,13 @@ for t=1:m
 
 end
 
-Theta2_grad = del_2 / m;
-Theta1_grad = del_1 / m;
+Theta1Punishment = Theta1 * (lambda / m);
+Theta1Punishment(:,1) = 0;
+Theta2Punishment = Theta2 * (lambda / m);
+Theta2Punishment(:,1) = 0;
+
+Theta2_grad = (del_2 / m) + Theta2Punishment;
+Theta1_grad = (del_1 / m) + Theta1Punishment;
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
