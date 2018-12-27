@@ -19,7 +19,7 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 
 % cost function
-for i=1:m,
+for i=1:m
     xRow = X(i,:);
     thetaTrans = theta';
     h = sigmoid(sum(xRow .* thetaTrans));
@@ -36,8 +36,8 @@ end
 
 
 % gradient
-for i=1:n,
-    for j=1:m,
+for i=1:n
+    for j=1:m
         xRow = X(j,:);
         thetaTrans = theta';
         h = sigmoid(sum(xRow .* thetaTrans));
