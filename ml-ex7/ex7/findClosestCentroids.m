@@ -21,9 +21,23 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+for i=1:size(X,1)
+    diffVec = (centroids(1,:) - X(i,:)) .^2;
+    minSum = sum(diffVec);
+    closestCentroid = 1;
 
+    for j=2:K
+        diffVec = (centroids(j,:) - X(i,:)) .^2;
+        sumVal = sum(diffVec);
 
+        if sumVal < minSum
+            minSum = sumVal;
+            closestCentroid = j;
+        end
+    end
 
+    idx(i) = closestCentroid;
+end
 
 
 
