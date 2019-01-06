@@ -21,12 +21,13 @@ sigma2 = zeros(n, 1);
 %               should contain variance of the i-th feature.
 %
 
+for i=1:n
+    mu(i) = sum(X(:, i)) / m;
+end
 
-
-
-
-
-
+for i=1:n
+    sigma2(i) = sum( ( X(:, i) .- mu(i) ) .^2 ) / m;
+end
 
 
 
